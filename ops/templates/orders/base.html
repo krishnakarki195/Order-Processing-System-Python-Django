@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		OPS | Order Processing System
+	</title>
+	<link rel="stylesheet" type="text/css" href='{% static "orders/css/base.css" %}'>
+</head>
+<body>
+
+{% block header%}
+	{% include "orders/header.html" %}
+{% endblock header %}
+
+{% block content%}
+	<p>This is a test paragraph.</p>
+{% endblock content %}
+
+
+{% block footer%}
+	{% include "orders/footer.html" %}
+{% endblock footer %}
+
+</body>
+</html>
+
