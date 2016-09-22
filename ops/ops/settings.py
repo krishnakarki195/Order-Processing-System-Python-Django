@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ops.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates'),os.path.join(BASE_DIR,'templates/registration')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,5 +126,5 @@ STATICFILES_DIRS = [
     #'/var/www/static/',
 ]
 
-STATIC_ROOT =os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
-MEDIA_ROOT =os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+# STATIC_ROOT =os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+# MEDIA_ROOT =os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
