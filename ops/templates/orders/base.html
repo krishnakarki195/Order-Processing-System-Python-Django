@@ -3,23 +3,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>
-		OPS | Order Processing System
-	</title>
-	<link rel="stylesheet" type="text/css" href='{% static "orders/css/base.css" %}'>
+
+	{% block title %}
+		<title>OPS | Order Processing System</title>
+	{% endblock %}
+
+	<link rel="stylesheet" type="text/css" href='{% static "orders/css/base.css" %}' />
+
 </head>
 <body>
 
-{% block header%}
+{% block header %}
 	{% include "orders/header.html" %}
 {% endblock header %}
 
-{% block content%}
+{% block content %}
 	<p>This is a test paragraph.</p>
 {% endblock content %}
 
 
-{% block footer%}
+{% block footer %}
 	{% include "orders/footer.html" %}
 {% endblock footer %}
 

@@ -1,9 +1,10 @@
 from django.conf.urls import url
+from django.contrib import admin
 from .views import (
-	home,
-)
+		home,
+	)
 
 
 urlpatterns = [
-    url(r'^$', home, name= 'home'),
+    url(r'^$', home, name='home'),
 ]
