@@ -1,0 +1,12 @@
+{% extends "orders/index.html" %}
+
+{% block list_customer %}
+	<div class="col-md-12 text-center">
+	<h2 align="left">Customers...</h2>
+	{% for customer in customers %}
+	    <p style="border: 1px solid #FFFFFF; margin: 10px;" class="intro" data-scroll-reveal="wait 0.45s, then enter left and move 80px over 1s">
+				<span>Name: {{customer.name}}</span>
+	    </p>
+	{% endfor %}
+	</div>
+{% endblock list_customer %}
