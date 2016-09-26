@@ -20,7 +20,7 @@ class Order(models.Model):
 
 class MenuItem(models.Model):
     name = models.CharField(max_length=50)
-    order = models.ManyToManyField(Order,blank=True,null=True,related_name='menuitems')
+    order = models.ManyToManyField(Order,blank=True,related_name='menuitems')
 
     def __str__(self):
         return (str(self.name))
