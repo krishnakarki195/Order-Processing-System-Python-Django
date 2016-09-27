@@ -1109,3 +1109,15 @@ border:1px solid rgba(255,255,255,0.5);
 .sub-footer a{
     font-size:9px;
 }
+
+/* My style */
+#create_customer{
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+}
+#create_customer form input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

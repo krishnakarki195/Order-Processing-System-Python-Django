@@ -1,0 +1,11 @@
+{% extends "orders/index.html" %}
+
+{% block list_customer %}
+	<div id="create_customer">
+		<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+			{{form.as_p}}
+			<input type="submit" value="Create" />
+			<input type="reset" value="Clear"/>
+		</form>
+	</div>
+{% endblock list_customer %}

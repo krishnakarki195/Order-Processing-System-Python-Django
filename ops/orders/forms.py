@@ -1,5 +1,5 @@
 from django import forms
-from .models import MenuItem
+from .models import MenuItem, Customer
 
 class OrderForm(forms.ModelForm):
     menuitems = forms.ModelMultipleChoiceField(
@@ -22,3 +22,9 @@ class OrderForm(forms.ModelForm):
                     instance.menuitems.add(item)
         return instance
 
+class CustomerForm(forms.ModelForm):
+    class Meta:
+        model = Customer
+        fields = [
+            "name",
+        ]
