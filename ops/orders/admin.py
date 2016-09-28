@@ -7,11 +7,10 @@ class CustomerAdmin(admin.ModelAdmin):
     fields = ('name',)
 
 class OrderAdmin(admin.ModelAdmin):
-    fields= ('name','customer','menuitems')
-    form = OrderForm
+    fields= ('name','customer','menuitems',)
 
 class MenuItemAdmin(admin.ModelAdmin):
-    fields = ('name','order')
+    fields = ('name',)
 
 
 admin.site.register(Customer,CustomerAdmin)
