@@ -1,0 +1,25 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+    <p>List View</p>
+
+
+    {% for order in form.values %}
+    <div>
+    <ul>
+    <li>id: {{order.id}}</li>
+    <li>name : {{order.name}}</li>
+    <li>customer:{{order.customer}}</li>
+    <li>menuitems:
+    <ul>
+    {% for item in order.menuitems%}
+    <li>{{item.name}}</li>
+    {% endfor %}
+    </ul>
+    </li>
+    </ul>
+    </div>
+    {% endfor %}
+
+
+{% endblock content %}
