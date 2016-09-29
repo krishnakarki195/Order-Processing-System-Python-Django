@@ -1,4 +1,3 @@
-
 from .forms import OrderForm
 from django.views import View
 from django.http import HttpResponse
@@ -9,9 +8,61 @@ from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 
+# Home views
+class Home(View):
+
+    template_name= "index.html"
+
+    def get(self, request,*args,**kwargs):
+        return render(request,self.template_name,{})
+
+
+# Customer related views
+class CustomerList(View):
+    pass
+
+
+class CustomerDetail(View):
+    pass
+
+
+class CustomerCreate(View):
+    pass
+
+
+class CustomerUpdate(View):
+    pass
+
+
+class CustomerDelete(View):
+    pass
+
+
+# Menu related views
+class MenuList(View):
+    pass
+
+
+class MenuDetail(View):
+    pass
+
+
+class MenuCreate(View):
+    pass
+
+
+class MenuUpdate(View):
+    pass
+
+
+class MenuDelete(View):
+    pass
+
+
+# Order related views
 class OrderList(View):
 
-    template_name= "orderlist.html"
+    template_name= "list_order.html"
 
     def get(self, request,*args,**kwargs):
         context = {}
@@ -22,9 +73,10 @@ class OrderList(View):
 
         return render(request,self.template_name,{'form':context})
 
+
 class OrderDetail(View):
 
-    template_name = "orderlist.html"
+    template_name = "list_order.html"
 
     def get(self,request,id,*args,**kwargs):
         context = {}
@@ -34,8 +86,10 @@ class OrderDetail(View):
 
         return render(request,self.template_name,{'form':context})
 
+
 class OrderCreate(View):
-    template_name = "ordercreate.html"
+
+    template_name = "create_order.html"
     form_class = OrderForm
 
     def get(self, request,*args,**kwargs):
@@ -49,13 +103,13 @@ class OrderCreate(View):
             instance.save()
             form.save_m2m()
             messages.success(request,'create success!!')
-            return HttpResponseRedirect(reverse('orders:list'))
+            return HttpResponseRedirect(reverse('orders:list_order'))
         return render(request,self.template_name,{'form':form})
 
 
 class OrderUpdate(View):
 
-    template_name = "orderupdate.html"
+    template_name = "update_order.html"
     form_class = OrderForm
 
     def get(self,request,id,*args,**kwargs):
@@ -72,13 +126,13 @@ class OrderUpdate(View):
             instance.save()
             form.save_m2m()
             messages.success(request,'update success!!')
-            return HttpResponseRedirect(reverse('orders:detail',kwargs={'id':instance.id}))
+            return HttpResponseRedirect(reverse('orders:detail_order',kwargs={'id':instance.id}))
         return render(request,self.template_name,{'form':form})
+
 
 class OrderDelete(View):
 
     def get(self, request,id,*args,**kwargs):
         ob = get_object_or_404(Order,id=id)
         ob.delete()
-        return HttpResponseRedirect(reverse('orders:list'))
-
+        return HttpResponseRedirect(reverse('orders:list_order'))

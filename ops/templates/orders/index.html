@@ -76,12 +76,13 @@
             <li><a href="#feature" class="page-scroll">Test link</a></li>
             <li><a href="#howwork" class="page-scroll">Test link</a></li>
             <li><a href="#whylove" class="page-scroll">Test link</a></li>
-            <li><a href="#stats" class="page-scroll">STest link</a></li>
+            <li><a href="#stats" class="page-scroll">Test link</a></li>
             <li><a href="#screenshot" class="page-scroll">Test link</a></li>
             <li><a href="#testimonial-s" class="page-scroll">Test link</a></li>
             <li><a href="#contact" class="page-scroll" id="contacts"><i class="fa fa-send"></i></a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
+
       </div><!-- /.container-fluid -->
     </nav>
 
@@ -95,32 +96,19 @@
     
   <!-- [MAIN GALLERY ]
 =============================================================================================================================-->
-  <section class="main-gallery" id="home">
-    <div class="overlay">
-      <div class="container">
-          <div class="row">
-          {% block list_customer %}
-            <div class="col-md-12 text-center">
-                 <h1 class="text-capitalize bigFont" data-scroll-reveal="wait 0.45s, then enter top and move 80px over 1s">Order Now</h1>
+<section class="main-gallery" id="home">
+    <div class="container">
 
-                <p class="intro" data-scroll-reveal="wait 0.45s, then enter left and move 80px over 1s">Explore near by Nepali resturants</p>
+        <div class="row">
+        {% block content %}
+            <div class="custom_home">
+fkjgkjdsfjgk
             </div>
-            <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-                        <div class="text-center top40">
-                            <a href="#" class="btn btns white-background themecolor fadeInDown">Signup Free</a>
-                            <a href="#" class=" btn btns theme_background_color white fadeInLeft">Google Play</a>
-                            <a href="#" class="btn btns black-background white fadeInRight">
-                            Apple Store
-                            </a>
+        {% endblock content %}
+        </div>
 
-                        </div>
-            </div>
-            {% endblock list_customer %}
-          </div>
-      </div>
-    </div>
-      
-  </section>
+    </div>  
+</section>
 
   <!-- [/MAIN GALLERY]
 =============================================================================================================================-->

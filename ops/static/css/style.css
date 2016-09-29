@@ -1110,14 +1110,39 @@ border:1px solid rgba(255,255,255,0.5);
     font-size:9px;
 }
 
-/* My style */
-#create_customer{
-    background-color: #FFFFFF;
+
+/* Custom stylesheet starts here!! */
+/* ================================= */
+.custom_home{
+    height: 300px;
+    width: 100%
+    background-color: #D3D3D3;
+}
+.custom_content{
+    background-color: #D3D3D3;
     color: #000000;
     padding: 20px;
     border-radius: 10px;
 }
-#create_customer form input {
-    margin-top: 5px;
-    margin-bottom: 5px;
+.custom_content form input {
+    margin: 5px;
+    padding: 5px;
 }
+
+.custom_menu li {
+    list-style: inline;
+    display: inline-block;
+    border:1px solid #D3D3D3;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    color: #000000;
+    background-color: #257525;
+}
+.custom_menu li a{
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+/* Custom stylesheet ends here!! */
+/* ================================= */
