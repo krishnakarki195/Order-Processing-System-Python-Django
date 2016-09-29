@@ -1,17 +1,34 @@
-{% extends 'index.html' %}
+{%  extends 'index.html' %}
 
-{% block content%}
-	<div class="custom_content">
-		{% block menu %}
+{% block content %}
+    <div class="custom_content">
+        
+        {% block menu %}
             {% include "menu.html" %}
         {% endblock menu %}
-        <br />
-		<h3>Menu Details</h3>
-		<hr />
-		<div>
-			<li>Id:{{menu.id}}</li>
-			<li>Name:{{menu.name}}</li>
-		</div>
-	</div>
+
+        <h3>Menus</h3>
+            <div class="custom_list">
+                <br />
+                <span class="attr_content">{{menu.name}}</span>
+                <li>Price
+                    <ul>
+                        Small:<li>$ 0.00</li>
+                        Medium:<li>$ 0.00</li>
+                        Large:<li>$ 0.00</li>
+                    </ul>
+                </li>
+                <li>Photo
+                    <ul>
+                        <img width="200" height="200" alt="Photo" />
+                    </ul>
+                </li>
+                <br />
+                <span class="attr_link"><a href="{{menu.get_update_url}}">Update</a></span>
+                <span class="attr_link"><a href="{{menu.get_delete_url}}">Delete</a></span>
+                <br />
+                <br />
+            </div>
+    </div>
 
 {% endblock content %}

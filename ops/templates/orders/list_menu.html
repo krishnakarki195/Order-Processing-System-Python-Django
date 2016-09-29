@@ -9,9 +9,27 @@
 
         <h3>Menus</h3>
         {% for menu in menus.values %}
-            <li>id: {{menu.id}}</li>
-            <li>name : {{menu.name}}</li>
-            <hr />
+            <div class="custom_list">
+                <br />
+                <span class="attr_content">{{menu.name}}</span>
+                <li>Price
+                    <ul>
+                        Small:<li>$ 0.00</li>
+                        Medium:<li>$ 0.00</li>
+                        Large:<li>$ 0.00</li>
+                    </ul>
+                </li>
+                <li>Photo
+                    <ul>
+                        <img width="200" height="200" alt="photo" />
+                    </ul>
+                </li>
+                <br />
+                <span class="attr_link"><a href="{{menu.menu.get_update_url}}">Update</a></span>
+                <span class="attr_link"><a href="{{menu.menu.get_delete_url}}">Delete</a></span>
+                <br />
+                <br />
+            </div>
         {% endfor %}
     </div>
 

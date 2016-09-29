@@ -7,12 +7,35 @@
             {% include "menu.html" %}
         {% endblock menu %}
 
-        <h3>Customers</h3>
-        
+        <h3>Orders</h3>
         {% for customer in customers.values %}
-            <li>id: {{customer.id}}</li>
-            <li>name : {{customer.name}}</li>
-            <hr />
+            <div class="custom_list">
+                <span class="attr_content">{{customer.name}}</span>
+                <li>Address
+                    <ul>
+                        Street <li>asdf asdf asdf</li>
+                        City <li>asdf asdf asdf</li>
+                        State <li>asdf asdf asdf</li>
+                        Country <li>asdf asdf asdf</li>
+                    </ul>
+                </li>
+                <li>Email
+                    <ul>
+                        <li>aaa@aaa.aaa</li>
+                    </ul>
+                </li>
+                <li>Phone
+                    <ul>
+                        <li>000-000-0000</li>
+                    </ul>
+                </li>
+                <br />
+                <br />
+                <span class="attr_link"><a href="{{customer.customer.get_update_url}}">Update</a></span>
+                <span class="attr_link"><a href="{{customer.customer.get_delete_url}}">Delete</a></span>
+                <br />
+                <br />
+            </div>
         {% endfor %}
     </div>
 

@@ -29,8 +29,8 @@
                         <li>Active</li>
                     </ul>
                 </li><br />
-                <span class="attr_link"><a href="{{order.get_absolute_url}}">Update</a></span>
-                <span class="attr_link"><a href="{{order.get_absolute_url}}">Delete</a></span>
+                <span class="attr_link"><a href="{{ order.order.get_update_url }}">Update</a></span>
+                <span class="attr_link"><a href="{{ order.order.get_delete_url }}">Delete</a></span>
                 <br />
                 <br />
             </div>

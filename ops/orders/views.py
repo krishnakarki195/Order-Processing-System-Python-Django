@@ -26,7 +26,7 @@ class CustomerList(View):
         context = {}
         customers = Customer.objects.all()
         for customer in customers:
-            context[customer.name] = {'id':customer.id,'name':customer.name}
+            context[customer.name] = {'customer':customer,'id':customer.id,'name':customer.name}
         return render(request,self.template_name,{'customers':context})
 
 
@@ -96,7 +96,7 @@ class MenuList(View):
         context = {}
         menus = MenuItem.objects.all()
         for menu in menus:
-            context[menu.name] = {'id':menu.id,'name':menu.name}
+            context[menu.name] = {'menu':menu,'id':menu.id,'name':menu.name}
         return render(request,self.template_name,{'menus':context})
 
 
@@ -139,7 +139,7 @@ class MenuUpdate(View):
         return render(request,self.template_name,{'form':form})
 
     def post(self,request,id,*args,**kwargs):
-        ob = get_object_or_404(Order,id=id)
+        ob = get_object_or_404(MenuItem,id=id)
         form = self.form_class(request.POST or None,instance=ob)
         if form.is_valid():
             instance = form.save(commit=False)
@@ -167,8 +167,7 @@ class OrderList(View):
         orders = Order.objects.all()
         for order in Order.objects.all().prefetch_related('menuitems'):
             menuitems = list(order.menuitems.all())
-            context[order.name]={'id':order.id,'name':order.name,'customer':order.customer,'menuitems':menuitems}
-
+            context[order.name]={'order':order,'id':order.id,'name':order.name,'customer':order.customer,'menuitems':menuitems}
         return render(request,self.template_name,{'form':context})
 
 
@@ -180,7 +179,7 @@ class OrderDetail(View):
         context = {}
         for order in Order.objects.filter(id=int(id)).prefetch_related('menuitems'):
             menuitems = list(order.menuitems.all())
-            context[order.name]={'id':order.id,'name':order.name,'customer':order.customer,'menuitems':menuitems}
+            context[order.name]={'order':order,'id':order.id,'name':order.name,'customer':order.customer,'menuitems':menuitems}
 
         return render(request,self.template_name,{'form':context})
 
