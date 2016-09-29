@@ -168,6 +168,7 @@ class OrderList(View):
         for order in Order.objects.all().prefetch_related('menuitems'):
             menuitems = list(order.menuitems.all())
             context[order.name]={'order':order,'id':order.id,'name':order.name,'customer':order.customer,'menuitems':menuitems}
+
         return render(request,self.template_name,{'form':context})
 
 

@@ -10,7 +10,7 @@
         <h3>Orders</h3>
         {% for order in form.values %}
             <div class="custom_list">
-                <span class="attr_content">{{order.name}}</span>
+                <span class="attr_content">{{order.order}}</span>
                 <span class="attr_content">{{order.customer}}</span>
                 <li>Menuitems
                     <ul>
@@ -29,8 +29,10 @@
                         <li>Active</li>
                     </ul>
                 </li><br />
+
                 <span class="attr_link"><a href="{{ order.order.get_update_url }}">Update</a></span>
                 <span class="attr_link"><a href="{{ order.order.get_delete_url }}">Delete</a></span>
+
                 <br />
                 <br />
             </div>

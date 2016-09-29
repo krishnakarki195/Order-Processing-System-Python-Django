@@ -1,0 +1,54 @@
+.custom_home{
+    height: 300px;
+    width: 100%;
+    background-color: #D3D3D3;
+}
+.custom_content{
+    background-color: #D3D3D3;
+    color: #000000;
+    padding: 20px;
+    border-radius: 10px;
+}
+.custom_content form input {
+    margin: 5px;
+    padding: 5px;
+}
+/*menu*/
+.custom_menu li {
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: green;
+}
+.custom_menu li a {
+    color: white;
+    font-weight: bold;
+}
+/*end menu*/
+
+.custom_list{
+    border: 1px solid green;
+    margin: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.custom_list:hover{
+    background-color: #F1F1F1;
+}
+.custom_list li{
+    list-style: inline;
+    display: inline-block;
+    border:1px solid green;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+}
+.attr_content{
+    padding: 10px;
+}
+.attr_link{
+    padding: 10px;
+    border: 1 px solid green;
+    background-color: gray;
+}

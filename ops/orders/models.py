@@ -46,6 +46,7 @@ class Order(models.Model):
     def get_delete_url(self):
         return reverse('orders:delete_order', args=[self.id])
 
+
 #url = models.UrlField(max_length=200)
 # =======
 # # Create your models here.
