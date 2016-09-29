@@ -174,7 +174,7 @@ class OrderList(View):
 
 class OrderDetail(View):
 
-    template_name = "list_order.html"
+    template_name = "detail_order.html"
 
     def get(self,request,id,*args,**kwargs):
         context = {}

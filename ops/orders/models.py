@@ -27,6 +27,9 @@ class Order(models.Model):
     def __str__(self):
         return (str(self.name))
 
+    def get_absolute_url(self):
+        return reverse('update_order', args=[self.id])
+
 #url = models.UrlField(max_length=200)
 # =======
 # # Create your models here.

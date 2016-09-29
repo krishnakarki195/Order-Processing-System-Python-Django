@@ -1,7 +1,40 @@
-{% extends 'base.html'%}
+{%  extends 'index.html' %}
 
-{%block content%}
-	<div class="custom_content">
-		<h1>Order Detail View</h1>
-	</div>
-{%endblock content%}
+{% block content %}
+    <div class="custom_content">
+        
+        {% block menu %}
+            {% include "menu.html" %}
+        {% endblock menu %}
+
+        <h3>Order Details</h3>
+        {% for order in form.values %}
+            <div class="custom_list">
+                <span class="attr_content">{{order.name}}</span>
+                <span class="attr_content">{{order.customer}}</span>
+                <li>Menuitems
+                    <ul>
+                        {% for item in order.menuitems%}
+                            <li>{{item.name}}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>Order Date
+                    <ul>
+                        <li>2016-10-10 00:00:00</li>
+                    </ul>
+                </li>
+                <li>Order Status
+                    <ul>
+                        <li>Active</li>
+                    </ul>
+                </li><br />
+                <span class="attr_link"><a href="#">Update</a></span>
+                <span class="attr_link"><a href="#">Delete</a></span>
+                <br />
+                <br />
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %}

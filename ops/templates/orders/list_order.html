@@ -7,22 +7,33 @@
             {% include "menu.html" %}
         {% endblock menu %}
 
-        <h4>Orders</h4>
+        <h3>Orders</h3>
         {% for order in form.values %}
-        <div>
-            <ul>
-                <li>id: {{order.id}}</li>
-                <li>name : {{order.name}}</li>
-                <li>customer:{{order.customer}}</li>
-                <li>menuitems:
+            <div class="custom_list">
+                <span class="attr_content">{{order.name}}</span>
+                <span class="attr_content">{{order.customer}}</span>
+                <li>Menuitems
                     <ul>
-                    {% for item in order.menuitems%}
-                        <li>{{item.name}}</li>
-                    {% endfor %}
+                        {% for item in order.menuitems%}
+                            <li>{{item.name}}</li>
+                        {% endfor %}
                     </ul>
                 </li>
-            </ul>
-        </div>
+                <li>Order Date
+                    <ul>
+                        <li>2016-10-10 00:00:00</li>
+                    </ul>
+                </li>
+                <li>Order Status
+                    <ul>
+                        <li>Active</li>
+                    </ul>
+                </li><br />
+                <span class="attr_link"><a href="{{order.get_absolute_url}}">Update</a></span>
+                <span class="attr_link"><a href="{{order.get_absolute_url}}">Delete</a></span>
+                <br />
+                <br />
+            </div>
         {% endfor %}
     </div>
 
