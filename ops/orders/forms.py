@@ -1,4 +1,3 @@
-
 from django import forms
 from .models import MenuItem, Order
 from django.db.models.fields.related import ManyToManyRel
@@ -7,27 +6,23 @@ from .models import MenuItem
 from django.contrib import admin
 from .models import Customer,MenuItem,Order
 
+
 class CustomerForm(forms.ModelForm):
     class Meta:
         model = Customer
         fields = ['name']
+
 
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields=['name','customer','menuitems']
 
+
 class MenuItemForm(forms.ModelForm):
     class Meta:
         model = MenuItem
         fields = ['name']
-
-
-
-
-
-
-
 
 # class _OrderForm(forms.ModelForm):
 #     menuitems = forms.ModelMultipleChoiceField(
@@ -56,4 +51,3 @@ class MenuItemForm(forms.ModelForm):
 #     class Meta:
 #         model = Order
 #         fields = ['name','customer']
-

@@ -1,4 +1,4 @@
-from .forms import OrderForm
+from .forms import OrderForm, MenuItemForm, CustomerForm
 from django.views import View
 from django.http import HttpResponse
 from django.shortcuts import render,get_object_or_404
@@ -40,23 +40,71 @@ class CustomerDelete(View):
 
 # Menu related views
 class MenuList(View):
-    pass
+
+    template_name= "list_menu.html"
+
+    def get(self, request,*args,**kwargs):
+        context = {}
+        menus = MenuItem.objects.all()
+        for menu in menus:
+            context[menu.name] = {'id':menu.id,'name':menu.name}
+        return render(request,self.template_name,{'menus':context})
 
 
 class MenuDetail(View):
-    pass
+
+    template_name = "detail_menu.html"
+
+    def get(self,request,id,*args,**kwargs):
+        menu = get_object_or_404(MenuItem,id=id)
+        return render(request,self.template_name,{'menu':menu})
 
 
 class MenuCreate(View):
-    pass
+    template_name = "create_menu.html"
+    form_class = MenuItemForm
+
+    def get(self, request,*args,**kwargs):
+        form = self.form_class(initial={})
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request,*args,**kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.success(request,'Menu create successful !')
+            return HttpResponseRedirect(reverse('orders:list_menu'))
+        return render(request,self.template_name,{'form':form})
 
 
 class MenuUpdate(View):
-    pass
+
+    template_name = "update_menu.html"
+    form_class = MenuItemForm
+
+    def get(self,request,id,*args,**kwargs):
+        ob = get_object_or_404(MenuItem,id=id)
+        form = self.form_class(instance=ob)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request,id,*args,**kwargs):
+        ob = get_object_or_404(Order,id=id)
+        form = self.form_class(request.POST or None,instance=ob)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.success(request,'Menu update successful !')
+            return HttpResponseRedirect(reverse('orders:detail_menu',kwargs={'id':instance.id}))
+        return render(request,self.template_name,{'form':form})
 
 
 class MenuDelete(View):
-    pass
+
+    def get(self, request,id,*args,**kwargs):
+        ob = get_object_or_404(Order,id=id)
+        ob.delete()
+        return HttpResponseRedirect(reverse('orders:list_menu'))
 
 
 # Order related views

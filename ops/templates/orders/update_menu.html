@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content%}
+	<div class="custom_content">
+		{% block menu %}
+            {% include "menu.html" %}
+        {% endblock menu %}
+        <br />
+		<h3>Update menu</h3>
+
+		<form method='post' action="">{%csrf_token%}
+			{{ form.as_p }}
+			<input type='submit' value='Update Menu'>
+		</form>
+	</div>
+
+{% endblock content %}

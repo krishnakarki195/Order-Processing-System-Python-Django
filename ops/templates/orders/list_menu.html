@@ -1,12 +1,18 @@
-{% extends "orders/index.html" %}
+{%  extends 'index.html' %}
 
 {% block content %}
-	<div class="col-md-12 text-center">
-	<h2 align="left">Munu Items</h2>
-	{% for menu in menus %}
-	    <p style="border: 1px solid #FFFFFF; margin: 10px;" class="intro" data-scroll-reveal="wait 0.45s, then enter left and move 80px over 1s">
-				<span>Name: {{menu.name}}</span>
-	    </p>
-	{% endfor %}
-	</div>
+    <div class="custom_content">
+        
+        {% block menu %}
+            {% include "menu.html" %}
+        {% endblock menu %}
+
+        <h3>Menus</h3>
+        {% for menu in menus.values %}
+            <li>id: {{menu.id}}</li>
+            <li>name : {{menu.name}}</li>
+            <hr />
+        {% endfor %}
+    </div>
+
 {% endblock content %}

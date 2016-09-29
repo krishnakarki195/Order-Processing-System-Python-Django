@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content%}
+	<div class="custom_content">
+		{% block menu %}
+            {% include "menu.html" %}
+        {% endblock menu %}
+        <br />
+		<h3>Menu Details</h3>
+		<hr />
+		<div>
+			<li>Id:{{menu.id}}</li>
+			<li>Name:{{menu.name}}</li>
+		</div>
+	</div>
+
+{% endblock content %}

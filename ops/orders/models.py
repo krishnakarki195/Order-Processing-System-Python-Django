@@ -5,15 +5,15 @@ from phonenumber_field.modelfields import PhoneNumberField
 from decimal import Decimal
 
 
-
 class Customer(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return(str(self.name))
 
+
 class MenuItem(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=120)
 
     def __str__(self):
         return (str(self.name))
@@ -26,9 +26,6 @@ class Order(models.Model):
 
     def __str__(self):
         return (str(self.name))
-
-
-
 
 #url = models.UrlField(max_length=200)
 # =======
