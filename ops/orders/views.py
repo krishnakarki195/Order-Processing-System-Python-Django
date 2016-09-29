@@ -19,23 +19,72 @@ class Home(View):
 
 # Customer related views
 class CustomerList(View):
-    pass
+
+    template_name= "list_customer.html"
+
+    def get(self, request,*args,**kwargs):
+        context = {}
+        customers = Customer.objects.all()
+        for customer in customers:
+            context[customer.name] = {'id':customer.id,'name':customer.name}
+        return render(request,self.template_name,{'customers':context})
 
 
 class CustomerDetail(View):
-    pass
+
+    template_name = "detail_customer.html"
+
+    def get(self,request,id,*args,**kwargs):
+        customer = get_object_or_404(Customer,id=id)
+        return render(request,self.template_name,{'customer':customer})
 
 
 class CustomerCreate(View):
-    pass
+
+    template_name = "create_customer.html"
+    form_class = CustomerForm
+
+    def get(self, request,*args,**kwargs):
+        form = self.form_class(initial={})
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request,*args,**kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.success(request,'Cusomer create successful !')
+            return HttpResponseRedirect(reverse('orders:list_customer'))
+        return render(request,self.template_name,{'form':form})
 
 
 class CustomerUpdate(View):
-    pass
+
+    template_name = "update_customer.html"
+    form_class = CustomerForm
+
+    def get(self,request,id,*args,**kwargs):
+        ob = get_object_or_404(Customer,id=id)
+        form = self.form_class(instance=ob)
+        return render(request,self.template_name,{'form':form})
+
+    def post(self,request,id,*args,**kwargs):
+        ob = get_object_or_404(Customer,id=id)
+        form = self.form_class(request.POST or None,instance=ob)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.save()
+            messages.success(request,'Customer update successful !')
+            return HttpResponseRedirect(reverse('orders:detail_customer',kwargs={'id':instance.id}))
+        return render(request,self.template_name,{'form':form})
 
 
 class CustomerDelete(View):
-    pass
+
+    def get(self, request,id,*args,**kwargs):
+        ob = get_object_or_404(Customer,id=id)
+        ob.delete()
+        return HttpResponseRedirect(reverse('orders:list_customer'))
 
 
 # Menu related views
@@ -61,6 +110,7 @@ class MenuDetail(View):
 
 
 class MenuCreate(View):
+
     template_name = "create_menu.html"
     form_class = MenuItemForm
 
@@ -102,7 +152,7 @@ class MenuUpdate(View):
 class MenuDelete(View):
 
     def get(self, request,id,*args,**kwargs):
-        ob = get_object_or_404(Order,id=id)
+        ob = get_object_or_404(MenuItem,id=id)
         ob.delete()
         return HttpResponseRedirect(reverse('orders:list_menu'))
 

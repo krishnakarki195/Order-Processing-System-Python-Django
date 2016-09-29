@@ -1,5 +1,17 @@
-{% extends "orders/index.html" %}
+{% extends 'index.html' %}
 
-{% block list_customer %}
+{% block content%}
+	<div class="custom_content">
+		{% block menu %}
+            {% include "menu.html" %}
+        {% endblock menu %}
+        <br />
+		<h3>Customer Details</h3>
+		<hr />
+		<div>
+			<li>Id:{{customer.id}}</li>
+			<li>Name:{{customer.name}}</li>
+		</div>
+	</div>
 
-{% endblock list_customer %}
+{% endblock content %}

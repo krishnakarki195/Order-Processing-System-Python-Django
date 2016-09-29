@@ -1,5 +1,19 @@
-{% extends "orders/index.html" %}
+{%  extends 'index.html' %}
 
-{% block list_customer %}
+{% block content%}
+	<div class="custom_content">
+		{% block menu %}
+            {% include "menu.html" %}
+        {% endblock menu %}
 
-{% endblock list_customer %}
+		<h3>Create Customer</h3>
+		<br />
+		<form method='post' action="{% url 'orders:create_customer' %}">{%csrf_token%}
+		{{ form.as_p }}
+		<input type='submit' value='Add'>
+		<input type='reset' value='Clear'>
+		</form>
+		<hr />
+	</div>
+
+{%endblock content%}
